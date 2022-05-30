@@ -27,34 +27,49 @@ function preload(){
     background(0);
     edges = createEdgeSprites();
     rabbit.collide(edges);
-    
-    criarfolhas();
+    rabbit.x = World.mouseX;
     drawSprites();
+    criarfolhasverdes();
+    criarfolhaslaranjas();
+    criarMacas();
+    var selecionar_objetos = Math.round(random(1,3)); 
   }
 
+  if ((frameCount % 80 == 0)) {
+    var randNumber = Math.round(random(10, 80));
+  selecionar_objetos = createSprite(600, 100, 40, 10);
+  selecionar_objetos.y = randNumber;
+  }
+ 
 
-  function criarfolhas() {
+  function criarfolhasverdes() {
     leaf = createSprite(330,50,30,30);
     leaf.addImage(leafImg);
     leaf.scale = 0.05;
     leaf. velocityY = 3;
-
-    orangeLeaf = createSprite(120,50,30,30);
-    orangeLeaf.addImage(orangeLeafImg);
-    orangeLeaf.scale = 0.05;
-    orangeLeaf.velocityY = 3;
-
-    apple = createSprite(250,50,30,30);
-    apple.addImage(appleImg);
-    apple.scale = 0.05;
-    apple.velocityY = 3;
-
-    redImage = createSprite(50,50,30,30);
-    redImage.addImage(redImageImg);
-    redImage.scale = 0.05;
-    redImage.velocityY = 3;
   }
 
+  function criarfolhaslaranjas() {
+    
+      orangeLeaf = createSprite(120,50,30,30);
+      orangeLeaf.addImage(orangeLeafImg);
+      orangeLeaf.scale = 0.05;
+      orangeLeaf.velocityY = 3;
+  
+      
+  }
 
+  function criarMacas() {
+  
+      apple = createSprite(250,50,30,30);
+      apple.addImage(appleImg);
+      apple.scale = 0.05;
+      apple.velocityY = 3;
 
- 
+  }
+if (condition) {
+  criarMacas();
+} else {
+  criarfolhasverdes();
+  criarfolhaslaranjas();
+}
